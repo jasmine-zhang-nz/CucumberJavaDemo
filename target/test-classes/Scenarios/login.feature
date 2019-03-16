@@ -7,5 +7,5 @@ Feature: Login Feature
     Then user is on Login Page
 
     Examples:
-    | username      | password|
-    | test@gmail.com| 123     |
+    |username|password|
+    |        |        |
