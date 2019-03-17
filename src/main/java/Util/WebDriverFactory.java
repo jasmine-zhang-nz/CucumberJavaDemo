@@ -10,28 +10,33 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class WebDriverFactory {
 
-    public static WebDriver newDriver(String driverType){
+    public static WebDriver createDriver(String driverType, Platform platform){
 
+        WebDriver driver = null;
+        String propertyName = "";
+        String propertyPath = "";
 
-            switch(driverType){
-                case "chrome":
-                    return new ChromeDriver(ChromeDriverService.createDefaultService(), new ChromeOptions());
-                case "safari":
-                    return new SafariDriver();
-                default:
-                    return new FirefoxDriver();
+        if(platform.is(Platform.WINDOWS)){
+            propertyPath = "./drivers/win/chromedriver";
+        }else{
+            propertyPath = "./drivers/mac/chromedriver";
+        }
+
+        switch(driverType){
+            case "chrome":
+                propertyName = "webdriver.chrome.driver";
+                driver = new ChromeDriver(ChromeDriverService.createDefaultService(), new ChromeOptions());
+                break;
+            case "safari":
+                propertyName = "webdriver.gecko.driver";
+                driver = new SafariDriver();
+                break;
+            default:
+                driver = new FirefoxDriver();
+                break;
             }
-    }
 
-    public static void setupOS(){
-
-        if(Platform.getCurrent().is(Platform.MAC)){
-            System.setProperty("webdriver.chrome.driver", "./drivers/mac/chromedriver");
-        }
-        if(Platform.getCurrent().is(Platform.WINDOWS)){
-            System.setProperty("webdriver.chrome.driver", "./drivers/win/chromedriver");
-        }
-
-
+            System.setProperty(propertyName, propertyPath);
+            return driver;
     }
 }

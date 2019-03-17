@@ -2,17 +2,9 @@
 
 <suite name="login">
 
-    <test name="order">
+    <test name="">
         <classes>
-            <class name="com.mkyong.testng.examples.suite.TestConfig" />
-            <class name="com.mkyong.testng.examples.suite.TestOrder" />
-        </classes>
-    </test>
-
-    <test name="database">
-        <classes>
-            <class name="com.mkyong.testng.examples.suite.TestConfig" />
-            <class name="com.mkyong.testng.examples.suite.TestDatabase" />
+            <class name="" />
         </classes>
     </test>
 

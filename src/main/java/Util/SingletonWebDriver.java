@@ -1,5 +1,6 @@
 package Util;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 
 public class SingletonWebDriver {
@@ -10,8 +11,8 @@ public class SingletonWebDriver {
     {
             if (driver == null)
             {
-                driver = WebDriverFactory.NewDriver(ConfigurationManager.AppSettings.Get("WebDriverType"));
-                driver.Manage().Window.Maximize();
+                driver = WebDriverFactory.createDriver(System.getenv("DriverType"), Platform.getCurrent());
+                driver.manage().window().maximize();
             }
             return driver;
     }
