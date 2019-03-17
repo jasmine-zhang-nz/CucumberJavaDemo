@@ -29,4 +29,8 @@ public class BasePage {
         return driver.getCurrentUrl().contains(resourcePath);
     }
 
+    public void navigateTo(){
+        driver.navigate().to(System.getenv("BASE_URL") + resourcePath);
+    }
+
 }

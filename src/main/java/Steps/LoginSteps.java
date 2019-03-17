@@ -13,6 +13,7 @@ public class LoginSteps {
     @Given("^When user is on the login page$")
     public void when_user_is_on_the_login_page()  {
         loginPage = new LoginPage();
+        loginPage.navigateTo();
         loginPage.pageIsLoadedCorrectly();
     }
     @When("^user enters \"([^\"]*)\" and \"([^\"]*)\"$")
